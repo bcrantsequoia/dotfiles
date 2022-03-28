@@ -20,6 +20,14 @@ Change modifiers:
 
 ### Mouse
 - Both sliders at 100%
+- Download [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser)
+	- Enable "Reverse Vertical"
+	- Enable "Reverse Mouse"
+
+
+### Battery
+- Turn display off after: 15 min
+- Disable "Optimize video streaming while on battery"
 
 ----
 
@@ -34,7 +42,8 @@ Change modifiers:
 - Dropbox
 - Discord
 - Spotify
-
+- [Scroll Reverser] (https://github.com/pilotmoon/Scroll-Reverser)
+	
 ----
 
 # Setting up Dev Environment:
