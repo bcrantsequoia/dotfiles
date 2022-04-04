@@ -73,7 +73,15 @@ Host *
 4. Add .zshrc to user root
 
 5. Python things
-- pyenv
+- Instal `pyenv` build dependencies
+- `brew install openssl readline sqlite3 xz zlib`
+- historically i have installed pyenv manually, going to try through homebrew and see if things have improved
+- `brew install pyenv`
+- `pyenv install --list`
+- `pyenv install $PYTHON_VERSION`
+- so far so good...
+- `brew install pyenv-virtualenv`
+- maybe in the future `venv` will just be default?
 
 6. JS things
 - nvm
