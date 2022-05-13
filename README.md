@@ -73,9 +73,10 @@ Host *
 4. Add .zshrc to user root
 
 5. Python things
-- Instal `pyenv` build dependencies
+- Install `pyenv` build dependencies
 - `brew install openssl readline sqlite3 xz zlib`
-- historically i have installed pyenv manually, going to try through homebrew and see if things have improved
+- Historically, I have installed pyenv from source. 
+- Going to try through homebrew and see if things have improved
 - `brew install pyenv`
 - `pyenv install --list`
 - `pyenv install $PYTHON_VERSION`
@@ -84,17 +85,35 @@ Host *
 - maybe in the future `venv` will just be default?
 
 6. JS things
-- nvm
+- Installing Node Version Manager 
+- Historically, I have also installed nvm from source.
+- Going to try through Homebrew...
+- `brew install nvm`
+- `nvm ls-remote`
+- `nvm install --lts` or preferred even numbered version
 
-7. Ruby things
-- rbenv
 
 # Setting up Dev Tools:
-### IDEs
-- Atom
-- Docker
-- PyCharm
-- VS Code
+### PyCharm
+
+### VS Code
+
+Plugins:
+- Turbo Console Log by ChakrounAnas
+- Prettier
+- Auto Import - ES6, TS, JSX, TSX by Sergey Korenuk
+- ES7 + React/Redux/React-Native Snippets by dsznajder
+
+Could also pick up the Python and Docker plugins if desired.
+
+Keyboard Shortcuts:
+Redo					command + Y
+Replace 				command + R
+Toggle Line Comment			control + /
+View: Toggle Maximized Panel		command + '
+
+### Docker
+
 
 ### CLIs
 - awscli
