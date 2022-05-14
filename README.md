@@ -101,7 +101,7 @@ Host *
 Plugins:
 - Turbo Console Log by ChakrounAnas
 - Prettier
-- Auto Import - ES6, TS, JSX, TSX by Sergey Korenuk
+- Auto Import - ES6, TS, JSX, TSX by steoates
 - ES7 + React/Redux/React-Native Snippets by dsznajder
 
 Could also pick up the Python and Docker plugins if desired.
@@ -117,11 +117,12 @@ View: Toggle Maximized Panel		command + '
 
 ### CLIs
 - awscli
-- awscdk
+- aws-cdk
 - csvkit
 - ffmpeg
 - jq
 - telnet
 - tree
 - wget
+- `brew install awscli aws-cdk csvkit ffmpeg jq telnet tree wget`
 
