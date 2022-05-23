@@ -91,10 +91,18 @@ Host *
 - `brew install nvm`
 - `nvm ls-remote`
 - `nvm install --lts` or preferred even numbered version
+- Install yarn
+- `npm install --global yarn`
 
 
 # Setting up Dev Tools:
 ### PyCharm
+- Load keymap config file
+- Add pyenv interpreter
+
+Plugins:
+- Key Promoter X
+- AWS Toolkit
 
 ### VS Code
 
