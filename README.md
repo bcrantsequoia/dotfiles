@@ -97,7 +97,8 @@ Host *
 
 # Setting up Dev Tools:
 ### PyCharm
-- Load keymap config file
+- Load keymappings
+  - Copy [keymaps](keymaps) dir to `~/Library/Application Support/Jetbrains/PyCharm`
 - Add pyenv interpreter
 
 Plugins:
@@ -115,15 +116,15 @@ Plugins:
 Could also pick up the Python and Docker plugins if desired.
 
 Keyboard Shortcuts:
-Redo					command + Y
-Replace 				command + R
-Toggle Line Comment			control + /
-View: Toggle Maximized Panel		command + '
-
-### Docker
-
+| Redo | command + Y |    
+| Replace | command + R |  
+| Toggle Line Comment | control + / |  
+| View: Toggle Maximized Panel | command + ' |
 
 ### CLIs
+
+- atom
+  - Set atom as default app for most filetypes
 - awscli
 - aws-cdk
 - csvkit
@@ -132,5 +133,6 @@ View: Toggle Maximized Panel		command + '
 - telnet
 - tree
 - wget
-- `brew install awscli aws-cdk csvkit ffmpeg jq telnet tree wget`
+
+`brew install atom awscli aws-cdk csvkit ffmpeg jq telnet tree wget`
 
