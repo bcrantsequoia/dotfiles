@@ -1,6 +1,12 @@
 # dotfiles
 
 # Apple Settings:
+### Dock
+- Dock Size: Slider at 33%
+- Position: Left
+- Enable "Minimize windows into application icon"
+- Disable "Show recent applications in Dock" 
+
 ### Keyboards
 *External Keyboard* 
 Change modifiers:
