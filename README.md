@@ -17,6 +17,8 @@ Change modifiers:
 - Disable "Force Click and haptic feedback"
 - Click = "Firm"
 - Tracking Speed: Slider at about 33%
+- Scroll & Zoom Disable "Zoom in or out"
+- Scroll & Zoom Disable "Smart zoom"
 
 ### Mouse
 - Both sliders at 100%
@@ -32,7 +34,9 @@ Change modifiers:
 ----
 
 # Apple Store Things:
-- Magnet, set magnet keyboard shorts
+~~- Magnet, set magnet keyboard shorts~~
+- Use [Rectangle](https://github.com/rxhanson/Rectangle) instead of Magnet
+- `brew install --cask rectangle`  
 - 1Password, scan QR code from phone
 - Slack
 
