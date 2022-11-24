@@ -2,6 +2,6 @@
 	name = ${NAME}
 	email = ${EMAIL}
 [credential "https://github.com"]
-        username = ${USERNAME}
+    username = ${USERNAME}
 	helper = "store --file ~/workspace/.git-credentials"
 

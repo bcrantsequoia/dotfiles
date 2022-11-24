@@ -1,59 +1,57 @@
+#
+# Stylize Terminal
+#
 function precmd() {
         echo
 }
+PROMPT="
+%B%F{green}%n%f%b %F{blue}%~ $%f "
 
-PROMPT='
-%B%F{green}%n%f%b %F{blue}%~ $%f '
-
+#
+# Modify $PATH
+#
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-
-export PATH=/usr/local/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Loads nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+export PATH="$HOME/.yarn/bin:$PATH"
 
+#
+# Aliases
+#
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias gb="git branch -vv"
+alias gl='git log \
+	--pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" \
+	--decorate \
+	--date=short'
+alias gr="git reset --soft HEAD~1"
+alias gs="git status"
+alias k="kubectl"
+alias lsa="ls -la --color"
+alias lsd='ls -la --color | grep "^d"'
+alias loadenv='export $(grep -v "^#" .env | xargs)'
+alias lscpu="sysctl -a | grep cpu | grep hw"
+alias nproc="sysctl -n hw.physicalcpu"
 alias rmds='find . -name ".DS_Store" -delete'
 
-alias gs='git status'
-alias gb='git branch -vv'
-alias gl='git log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short'
-
+#
+# Configure History
+#
 HISTFILE=~/.zsh_history
 HISTSIZE=999999
 HISTFILESIZE=999999
 SAVEHIST=999999
 setopt INC_APPEND_HISTORY
 
-# Respect .nvmrc in path.
-if [[ $TERM_PROGRAM = vscode ]]; then
-	autoload -U add-zsh-hook
-	load-nvmrc() {
-  	local node_version="$(nvm version)"
-  	local nvmrc_path="$(nvm_find_nvmrc)"
-
- 	if [ -n "$nvmrc_path" ]; then
-    	local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    	if [ "$nvmrc_node_version" = "N/A" ]; then
-      	nvm install
-    	elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      	nvm use
-    	fi
-  	elif [ "$node_version" != "$(nvm version default)" ]; then
-    	echo "Reverting to nvm default version"
-    	nvm use default
-  	fi
-	}
-	# add-zsh-hook chpwd load-nvmrc
-	load-nvmrc
-fi
-
 # Respect .python-version in path. Show in terminal.
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
-

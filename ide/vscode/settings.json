@@ -1,0 +1,22 @@
+{
+    "jupyter.askForKernelRestart": false,
+    "notebook.output.textLineLimit": 20000,
+    "python.formatting.provider": "black",
+    "python.testing.pytestEnabled": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.venvPath": "/Users/bcrant/.pyenv",
+    "explorer.confirmDelete": false,
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        ".env": "shellscript",
+        "*.py": "python"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.explorerKind": "external",
+    "turboConsoleLog.logMessagePrefix": "",
+    "turboConsoleLog.addSemicolonInTheEnd": true,
+    "workbench.colorTheme": "Default Dark+"
+}
