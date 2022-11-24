@@ -1,4 +1,4 @@
-# dotfiles
+# BOOTSTRAP DEVELOPMENT ENVIRONMENT
 
 # Apple Settings:
 ### Dock
@@ -16,7 +16,7 @@ Shortcuts:
 - Disable most defaults to free up key combos
 - Especially under "mission control"
 
-*Internal Keyboard*
+Internal Keyboard:
 - Key Repeat: Slider at 100% fast
 - Delay Until Repeater: Slider at 100% short
 - Change "Press Globe (fn)" to "Do Nothing"
@@ -34,7 +34,6 @@ Shortcuts:
 - Download [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser)
 	- Enable "Reverse Vertical"
 	- Enable "Reverse Mouse"
-
 
 ### Battery
 - Turn display off after: 15 min
@@ -56,22 +55,29 @@ Shortcuts:
 ----
 
 # Setting up Dev Environment:
-1. Install Homebrew
+### Dotfiles 
+- `cp .vimrc $HOME/.vimrc`
+- `cp .zshrc $HOME/.zshrc`
+
+### Homebrew
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-2. OS Helpers
-- [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser)
-- [Rectangle](https://github.com/rxhanson/Rectangle)
-  - `brew install --cask rectangle`
-  - Settings > Import > [RectangleConfig.json](./RectangleConfig.json) 
+### OS Helpers
 - [Karabiner](https://karabiner-elements.pqrs.org/)
   - Simple modifications (all devices)
     - caps_lock --> grace_accent_and_tilde 
 
-3. `brew install git`
+- [Rectangle](https://github.com/rxhanson/Rectangle)
+  - `brew install --cask rectangle`
+  - Settings > Import > [RectangleConfig.json](./RectangleConfig.json)
 
-4. Set up Github
+- [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser)
+  - Enable "Reverse Vertical"
+  - Enable "Reverse Mouse"
 
+### Git
+- `brew install git`
+- git config --global init.defaultBranch main
 - `mkdir ~/workspace`
 - add ~/workspace/.gitconfig_personal from dotfiles
 - generate ssh key:  `ssh-keygen -t ed25519 -C "${PERSONAL_GITHUB_EMAIL}"`
@@ -88,9 +94,7 @@ Host *
 - if adding multiple git accounts, the .git-credentials file in each account repo (workspace, company_name, etc) is just one line:
 `https://{{username}}:{{PAT}}@github.com`
 
-5. Add .zshrc to user root
-
-6. Python things
+### Python
 - Install `pyenv` build dependencies
 - `brew install openssl readline sqlite3 xz zlib`
 - Historically, I have installed pyenv from source. 
@@ -102,7 +106,7 @@ Host *
 - `brew install pyenv-virtualenv`
 - maybe in the future `venv` will just be default?
 
-7. JS things
+### Javascript
 - Installing Node Version Manager 
 - Historically, I have also installed nvm from source.
 - Going to try through Homebrew...
@@ -113,17 +117,7 @@ Host *
 - `npm install --global yarn`
 
 
-# Setting up Dev Tools:
-### Operating System Helpers
-- [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser)
-- [Rectangle](https://github.com/rxhanson/Rectangle)
-  - `brew install --cask rectangle`
-  - Settings > Import > [RectangleConfig.json](./RectangleConfig.json) 
-- [Karabiner](https://karabiner-elements.pqrs.org/)
-  - Simple modifications (all devices)
-    - caps_lock --> grace_accent_and_tilde 
-
-
+# IDEs
 ### PyCharm
 - Add pyenv interpreter
 - Copy configs to application dir...
@@ -178,3 +172,4 @@ Plugins:
 
 `brew install atom awscli aws-cdk csvkit ffmpeg jq npam telnet tree wget`
 
+# TODO: Probably could make most of this a shell script 
