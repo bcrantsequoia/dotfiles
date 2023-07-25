@@ -9,7 +9,9 @@
     "extensions.ignoreRecommendations": true,
     "files.associations": {
         ".env": "shellscript",
-        "*.py": "python"
+        ".env.*": "shellscript",
+        "*.go": "go",
+        "*.py": "python",
     },
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.scrollback": 100000,
@@ -18,5 +20,19 @@
     "terminal.explorerKind": "external",
     "turboConsoleLog.logMessagePrefix": "",
     "turboConsoleLog.addSemicolonInTheEnd": true,
-    "workbench.colorTheme": "Default Dark+"
+    "workbench.colorTheme": "Default Dark+",
+    "files.maxMemoryForLargeFilesMB": 16000,
+    "[go]": {
+
+        "editor.insertSpaces": false
+    },
+    "jupyter.experiments.enabled": false,
+    "jupyter.jupyterLaunchTimeout": 20000,
+    "jupyter.jupyterServerType": "local",
+    "jupyter.logging.level": "error",
+    "redhat.telemetry.enabled": false,
+    "[plaintext]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false
+    }
 }

@@ -160,6 +160,7 @@ Plugins:
 - ffmpeg
 - helm
 - jq
+- mcfly
 - mp4box
 - npam
 - rust
@@ -170,6 +171,6 @@ Plugins:
 - wget
 - vlc
 
-`brew install atom awscli aws-cdk csvkit ffmpeg jq npam telnet tree wget`
+`brew install atom awscli aws-cdk csvkit ffmpeg jq mcfly npam telnet tree wget`
 
 # TODO: Probably could make most of this a shell script 
