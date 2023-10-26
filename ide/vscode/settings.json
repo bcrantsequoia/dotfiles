@@ -11,7 +11,7 @@
         ".env": "shellscript",
         ".env.*": "shellscript",
         "*.go": "go",
-        "*.py": "python",
+        "*.py": "python"
     },
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.scrollback": 100000,
