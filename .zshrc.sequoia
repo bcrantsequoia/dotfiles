@@ -15,8 +15,6 @@ PROMPT="
 HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
-
-# HISTORY
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
 setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
@@ -25,8 +23,6 @@ setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt SHARE_HISTORY             # Share history between all sessions.
-# setopt INC_APPEND_HISTORY
-# END HISTORY
 
 
 #
@@ -54,8 +50,6 @@ export PATH="$PYENV_ROOT:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
-
-
 
 
 #
@@ -88,6 +82,8 @@ alias ls2list='python -c "import glob, pprint; pprint.pprint(sorted(glob.glob(\"
 alias rmds='find . -name ".DS_Store" -delete'
 alias s2d='TZ=utc date -j -r '
 alias zipenvs='mkdir -p envs && for f in $(ls -a | grep ".env") ; do cp $f ./envs/dot$f ; done && zip -r envs.zip envs && rm -rf envs'
+
+
 #
 # Load Autocompletions
 #
@@ -97,65 +93,17 @@ alias zipenvs='mkdir -p envs && for f in $(ls -a | grep ".env") ; do cp $f ./env
 #
 # Load Interpreters and mcfly
 #
-# echo "loading interpreters..."
+echo "loading interpreters..."
 
-# t1=$(gdate +%s.%N)
+t1=$(gdate +%s.%N)
 eval "$(pyenv init --path zsh --no-rehash)"
-# t2=$(gdate +%s.%N)
-# echo "$(( $t2 - $t1 ))	pyenv init..."
+t2=$(gdate +%s.%N)
+echo "$(( $t2 - $t1 )) 	pyenv init..."
 
-
-
-# t1=$(gdate +%s.%N)
-# export PATH="/opt/homebrew/Cellar/pyenv-virtualenv/1.2.1/shims:${PATH}"
-# export PYENV_VIRTUALENV_INIT=1
-# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# _pyenv_virtualenv_hook() {
-#   local ret=$?
-#   t1=$(gdate +%s.%N)
-#   if [ -n "${VIRTUAL_ENV-}" ]; then
-#     eval "$(pyenv sh-activate || pyenv sh-deactivate || true)" || true
-#   else
-#     eval "$(pyenv sh-activate || true)" || true
-#   fi
-#   t2=$(gdate +%s.%N)
-#   echo "$(( $t2 - $t1 ))  _pyenv_virtualenv_hook..."
-#   return $ret
-# };
-# typeset -g -a precmd_functions
-# if [[ -z $precmd_functions[(r)_pyenv_virtualenv_hook] ]]; then
-#   precmd_functions=(_pyenv_virtualenv_hook $precmd_functions);
-# fi
-# 
-# t2=$(gdate +%s.%N)
-# echo "$(( $t2 - $t1 ))	pyenv virtualenv init directly as zsh..."
-#
-
-
-INIT_PY=0
-case "$PWD" in
-    /Users/brian.crant/sequoia/data-engineering)
-        INIT_PY=1
-        ;;
-    /Users/brian.crant/sequoia/scratch)
-        INIT_PY=1
-        ;;
-    /Users/brian.crant/sequoia/sequoia-doc-parsers)
-        INIT_PY=1
-        ;;
-    *) 
-        INIT_PY=0
-        ;;
-esac
-
-if [[ $INIT_PY == 1 ]]; then
-	t1=$(gdate +%s.%N)
-	eval "$(pyenv virtualenv-init -)"
-	t2=$(gdate +%s.%N)
-	echo "$(( $t2 - $t1 ))	pyenv virtualenv init..."
-;
-fi
+t1=$(gdate +%s.%N)
+eval "$(pyenv virtualenv-init - | sed s/precmd/chcwd/g)" 
+t2=$(gdate +%s.%N)
+echo "$(( $t2 - $t1 )) 	pyenv virtualenv init..."
 
 eval "$(mcfly init zsh)"
-
 
