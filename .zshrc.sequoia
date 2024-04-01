@@ -1,0 +1,161 @@
+#
+# Stylize Terminal
+#
+function precmd() {echo}
+PROMPT="
+%B%F{green}%n%f%b %F{blue}%~ $%f "
+
+
+#
+# Preserve History
+#
+# Do this first so changes in .zshrc don't accidentally
+# result in my precious .zsh_history getting deleted
+#
+HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+
+# HISTORY
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt SHARE_HISTORY             # Share history between all sessions.
+# setopt INC_APPEND_HISTORY
+# END HISTORY
+
+
+#
+# Modify $PATH
+#
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/lib:$PATH"
+
+export LD_LIBRARY_PATH="/opt/homebrew/Cellar/ghostscript/10.03.0/lib/libgs.dylib"
+export DYLD_LIBRARY_PATH="/opt/homebrew/Cellar/ghostscript/10.03.0/lib/libgs.dylib"
+export PATH="$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include:$CPPFLAGS"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT:$PATH"
+
+# export NVM_DIR="$HOME/.nvm"
+# export PATH="$HOME/.yarn/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+
+
+
+#
+# Aliases
+#
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias de="cd ~/sequoia/data-engineering"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias gb="git branch -vv"
+alias gl='git log \
+	--pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" \
+	--decorate \
+	--date=short'
+alias gr="git reset --soft HEAD~1"
+alias gs="git status"
+alias init_dbt="cd ~/sequoia/data-engineering && source ./scripts/init_dbt_cloud_cli.sh && loadenv"
+alias k="kubectl"
+alias kctx='kubectl config get-contexts'
+alias kgp='kubectl get pods'
+alias lsa="ls -la --color"
+alias lsd='ls -la --color | grep "^d"'
+alias lscpu="sysctl -a | grep cpu | grep hw"
+alias nproc="sysctl -n hw.physicalcpu"
+alias loadenv='export $(grep -v "^#" .env | xargs)'
+alias ls2list='python -c "import glob, pprint; pprint.pprint(sorted(glob.glob(\"$PWD/*\")), sort_dicts=True)"'
+alias rmds='find . -name ".DS_Store" -delete'
+alias s2d='TZ=utc date -j -r '
+alias zipenvs='mkdir -p envs && for f in $(ls -a | grep ".env") ; do cp $f ./envs/dot$f ; done && zip -r envs.zip envs && rm -rf envs'
+#
+# Load Autocompletions
+#
+# autoload -Uz compinit && compinit
+
+
+#
+# Load Interpreters and mcfly
+#
+# echo "loading interpreters..."
+
+# t1=$(gdate +%s.%N)
+eval "$(pyenv init --path zsh --no-rehash)"
+# t2=$(gdate +%s.%N)
+# echo "$(( $t2 - $t1 ))	pyenv init..."
+
+
+
+# t1=$(gdate +%s.%N)
+# export PATH="/opt/homebrew/Cellar/pyenv-virtualenv/1.2.1/shims:${PATH}"
+# export PYENV_VIRTUALENV_INIT=1
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# _pyenv_virtualenv_hook() {
+#   local ret=$?
+#   t1=$(gdate +%s.%N)
+#   if [ -n "${VIRTUAL_ENV-}" ]; then
+#     eval "$(pyenv sh-activate || pyenv sh-deactivate || true)" || true
+#   else
+#     eval "$(pyenv sh-activate || true)" || true
+#   fi
+#   t2=$(gdate +%s.%N)
+#   echo "$(( $t2 - $t1 ))  _pyenv_virtualenv_hook..."
+#   return $ret
+# };
+# typeset -g -a precmd_functions
+# if [[ -z $precmd_functions[(r)_pyenv_virtualenv_hook] ]]; then
+#   precmd_functions=(_pyenv_virtualenv_hook $precmd_functions);
+# fi
+# 
+# t2=$(gdate +%s.%N)
+# echo "$(( $t2 - $t1 ))	pyenv virtualenv init directly as zsh..."
+#
+
+
+INIT_PY=0
+case "$PWD" in
+    /Users/brian.crant/sequoia/data-engineering)
+        INIT_PY=1
+        ;;
+    /Users/brian.crant/sequoia/scratch)
+        INIT_PY=1
+        ;;
+    /Users/brian.crant/sequoia/sequoia-doc-parsers)
+        INIT_PY=1
+        ;;
+    *) 
+        INIT_PY=0
+        ;;
+esac
+
+if [[ $INIT_PY == 1 ]]; then
+	t1=$(gdate +%s.%N)
+	eval "$(pyenv virtualenv-init -)"
+	t2=$(gdate +%s.%N)
+	echo "$(( $t2 - $t1 ))	pyenv virtualenv init..."
+;
+fi
+
+eval "$(mcfly init zsh)"
+
+
